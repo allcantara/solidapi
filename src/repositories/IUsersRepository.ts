@@ -1,6 +1,6 @@
-import { User } from "../entities/User";
+import { IUserAttributesDTO } from "../dtos/UserAttributesDTO";
 
 export interface IUsersRepository {
-  findByEmail(email: string): Promise<User>;
-  save(user: User): Promise<void>;
+  findByEmail(email: string): Promise<IUserAttributesDTO | null>;
+  save(user: IUserAttributesDTO): Promise<IUserAttributesDTO>;
 }
