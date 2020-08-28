@@ -8,7 +8,7 @@ import {
   Model,
 } from "sequelize-typescript";
 
-@Table({ tableName: "tb_users", timestamps: true })
+@Table({ modelName: "tb_users" })
 class User
   extends Model<IUserAttributesDTO, Omit<IUserAttributesDTO, "_id">>
   implements IUserAttributesDTO {
