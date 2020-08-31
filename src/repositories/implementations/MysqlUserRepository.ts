@@ -49,4 +49,28 @@ export class MysqlUserRepository implements IUsersRepository {
       throw new Error(error.message);
     }
   }
+
+  async update(data: IUserAttributesDTO, id: string): Promise<void> {
+    try {
+      const userExists = this.users.findByPk(id);
+
+      if (!userExists) {
+        throw new Error("User not exists!");
+      }
+
+      await this.users.update(data, { where: { id } });
+    } catch (error) {
+      console.log(error.message);
+      throw new Error(error.message);
+    }
+  }
+
+  async delete(id: string): Promise<void> {
+    try {
+      await this.users.destroy({ where: { id } });
+    } catch (error) {
+      console.log(error.message);
+      throw new Error(error.message);
+    }
+  }
 }

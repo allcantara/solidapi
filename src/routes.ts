@@ -1,8 +1,10 @@
-import { Router, request } from "express";
+import { Router } from "express";
 import { whatsapp } from "./client";
 import { createUserController } from "./useCases/CreateUser";
 import { showUserController } from "./useCases/ShowUser";
 import { indexUserController } from "./useCases/IndexUser";
+import { updateUserController } from "./useCases/UpdateUser";
+import { deleteUserController } from "./useCases/DeleteUser";
 
 const router = Router();
 
@@ -16,6 +18,14 @@ router.get("/users/:id", (request, response) => {
 
 router.get("/users", (request, response) => {
   return indexUserController.handle(request, response);
+});
+
+router.put("/users/:id", (request, response) => {
+  return updateUserController.handle(request, response);
+});
+
+router.delete("/users/:id", (request, response) => {
+  return deleteUserController.handle(request, response);
 });
 
 export { router };
