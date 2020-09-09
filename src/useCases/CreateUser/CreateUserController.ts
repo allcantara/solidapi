@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { CreateUserUseCase } from "./CreateUserUseCase";
-import { Whatsapp } from "venom-bot";
 
 export class CreateUserController {
   private createUserUseCase: CreateUserUseCase;
@@ -9,17 +8,15 @@ export class CreateUserController {
     this.createUserUseCase = createUserUseCase;
   }
 
-  async handle(
-    request: Request,
-    response: Response,
-    whatsapp: Promise<Whatsapp>
-  ): Promise<Response> {
+  async handle(request: Request, response: Response): Promise<Response> {
     try {
       const { name, email, password, telephoneNumber } = request.body;
-      const user = await this.createUserUseCase.execute(
-        { name, email, password, telephoneNumber },
-        whatsapp
-      );
+      const user = await this.createUserUseCase.execute({
+        name,
+        email,
+        password,
+        telephoneNumber,
+      });
 
       return response.status(201).json(user);
     } catch (error) {

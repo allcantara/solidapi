@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { whatsapp } from "./client";
 import { createUserController } from "./useCases/CreateUser";
 import { showUserController } from "./useCases/ShowUser";
 import { indexUserController } from "./useCases/IndexUser";
@@ -9,7 +8,7 @@ import { deleteUserController } from "./useCases/DeleteUser";
 const router = Router();
 
 router.post("/users", (request, response) => {
-  return createUserController.handle(request, response, whatsapp);
+  return createUserController.handle(request, response);
 });
 
 router.get("/users/:id", (request, response) => {

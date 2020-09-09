@@ -1,7 +1,8 @@
 import { Whatsapp } from "venom-bot";
-import { IUserAttributesDTO } from "../../dtos/UserAttributesDTO";
+import { IUserAttributesDTO } from "../../../dtos/UserAttributesDTO";
+import { IWhatsappProvider } from "../IWhatsappProvider";
 
-export class CreateUserWhasapp {
+export class WhatsappProvider implements IWhatsappProvider {
   private whatsapp: Promise<Whatsapp>;
 
   constructor(whatsapp: Promise<Whatsapp>) {
